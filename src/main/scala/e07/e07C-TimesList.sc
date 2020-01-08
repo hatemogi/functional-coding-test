@@ -7,12 +7,12 @@ def timesList(n: Int)(xs: List[Int]): List[Int] =
 timesList(2)(numbers)
 timesList(3)(numbers)
 
-type ListFun[T] = List[T] => List[T]
+type ListFunc[T] = List[T] => List[T]
 
 // currying
-val doubleList: ListFun[Int] = timesList(2)
-val tripleList: ListFun[Int] = timesList(3)
-val quadList: ListFun[Int] = timesList(4)
+val doubleList: ListFunc[Int] = timesList(2)
+val tripleList: ListFunc[Int] = timesList(3)
+val quadList: ListFunc[Int] = timesList(4)
 
 doubleList(numbers)
 tripleList(numbers)

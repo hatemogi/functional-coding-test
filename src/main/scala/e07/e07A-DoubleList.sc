@@ -8,10 +8,13 @@ doubleList(numbers)
 
 def doubleListPM(xs: List[Int]): List[Int] = xs match {
   case Nil => Nil
-  case x :: tail => x * 2 :: doubleListPM(tail)
+  case x :: tail => (x * 2) :: doubleListPM(tail)
 }
 
 doubleListPM(numbers)
+
+
+
 
 
 
