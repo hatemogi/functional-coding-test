@@ -4,7 +4,7 @@ import common.SpecUtil.smallList
 import org.scalacheck.Properties
 import org.scalacheck.Prop.forAll
 
-object AllSubsetsSpecification extends Properties("부분집합") {
+object AllSubsetsSpec extends Properties("부분집합") {
   import AllSubsets._
 
   property("[집합의 수 == 2^n개]") = forAll(smallList()) { xs =>

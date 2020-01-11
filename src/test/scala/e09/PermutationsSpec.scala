@@ -6,7 +6,7 @@ import org.scalacheck.{Properties}
 
 import scala.util.Random
 
-object PermutationsSpecification extends Properties("순열") {
+object PermutationsSpec extends Properties("순열") {
   import Permutations._
 
   private def factorial(n: Int) =
