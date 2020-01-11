@@ -1,4 +1,4 @@
-package e09
+package e10
 
 object Combinations extends App {
 

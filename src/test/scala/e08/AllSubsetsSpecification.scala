@@ -24,7 +24,7 @@ object AllSubsetsSpecification extends Properties("부분집합") {
   }
 
   property("[앞부분/뒷부분 집합들을 다 포함해야]")
-    = forAll(smallList.filterNot(_.isEmpty)) { (xs: List[Int]) =>
+    = forAll(smallList.filterNot(_.isEmpty)) { xs: List[Int] =>
     val ys = subsets(xs)
     (0 to xs.size).forall { n =>
       ys.contains(xs take n) && ys.contains(xs drop n)
