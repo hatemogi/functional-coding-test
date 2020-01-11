@@ -1,6 +1,6 @@
 package e08
 
-import common.GenUtil.smallList
+import common.SpecUtil.smallList
 import org.scalacheck.Properties
 import org.scalacheck.Prop.forAll
 
