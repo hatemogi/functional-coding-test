@@ -9,7 +9,7 @@ object PermutationsSpecification extends Properties("순열") {
   import Permutations._
 
   val smallList: Gen[List[Int]] =
-    Gen.choose(0, 16)
+    Gen.choose(0, 7)
       .flatMap(n => Gen.listOfN(n, Gen.chooseNum(1, 100)))
 
   private def factorial(n: Int) =
