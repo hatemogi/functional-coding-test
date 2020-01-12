@@ -1,4 +1,4 @@
-package e08
+package fpcoding.e08
 
 object ScalaSubsets extends App {
   psubsets(List())
@@ -6,8 +6,10 @@ object ScalaSubsets extends App {
   psubsets(List(1, 2, 3))
 
   private def psubsets[T](xs: List[T]) {
-    println(s"subsets(${xs}) == "
-      + xs.toSet.subsets().mkString("List(\n  ", "\n  ", "\n)"))
+    println(s"subsets($xs) == "
+      + xs.toSet
+        .subsets()
+        .mkString("List(\n  ", "\n  ", "\n)"))
   }
 
 }

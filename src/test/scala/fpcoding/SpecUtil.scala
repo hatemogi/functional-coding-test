@@ -1,4 +1,4 @@
-package common
+package fpcoding
 
 import org.scalacheck.Gen
 

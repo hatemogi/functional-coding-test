@@ -1,4 +1,4 @@
-package e09
+package fpcoding.e09
 
 object Permutations extends App {
   def permutations[T](xs: List[T]): List[List[T]] = {

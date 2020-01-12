@@ -1,4 +1,4 @@
-package e08
+package fpcoding.e08
 
 object AllSubsets extends App {
   def subsets[T](xs: List[T]): List[List[T]] =
@@ -8,7 +8,8 @@ object AllSubsets extends App {
 
   psubsets(List())
   psubsets(List(1))
-  psubsets(List(1, 2, 3))
+  psubsets(List(1, 2))
+  psubsets(List("a", "b", "c"))
 
   private def psubsets[T](xs: List[T]) {
     println(s"subsets(${xs}) == "

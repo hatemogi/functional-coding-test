@@ -1,6 +1,6 @@
-package e10
+package fpcoding.e10
 
-import common.SpecUtil._
+import fpcoding.SpecUtil._
 import org.scalacheck.Prop.forAll
 import org.scalacheck.Properties
 

@@ -1,4 +1,4 @@
-package e11
+package fpcoding.e11
 
 import org.scalatest.flatspec.AnyFlatSpec
 

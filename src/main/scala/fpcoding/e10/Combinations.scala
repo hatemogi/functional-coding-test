@@ -1,4 +1,4 @@
-package e10
+package fpcoding.e10
 
 object Combinations extends App {
 

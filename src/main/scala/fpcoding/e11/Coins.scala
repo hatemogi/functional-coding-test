@@ -1,4 +1,4 @@
-package e11
+package fpcoding.e11
 
 object Coins extends App {
   def minCoins(coins: List[Int], total: Int): List[Int] = {

@@ -1,6 +1,6 @@
-package e08
+package fpcoding.e08
 
-import common.SpecUtil.smallList
+import fpcoding.SpecUtil.smallList
 import org.scalacheck.Properties
 import org.scalacheck.Prop.forAll
 

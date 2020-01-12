@@ -1,8 +1,8 @@
-package e09
+package fpcoding.e09
 
-import common.SpecUtil.smallList
+import fpcoding.SpecUtil.smallList
 import org.scalacheck.Prop.forAll
-import org.scalacheck.{Properties}
+import org.scalacheck.Properties
 
 import scala.util.Random
 
