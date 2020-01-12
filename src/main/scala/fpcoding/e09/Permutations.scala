@@ -8,7 +8,10 @@ object Permutations extends App {
     }
   }
 
-  println(permutations(List()))
-  println(permutations(List(1)))
-  println(permutations(List(1, 2, 3)))
+  private def pperm[T](xs: List[T]): Unit =
+    println(s"permutations($xs) == " + permutations(xs))
+
+  pperm(List())
+  pperm(List(1))
+  pperm(List(1, 2, 3))
 }
