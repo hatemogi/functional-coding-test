@@ -12,7 +12,7 @@ object AllSubsets extends App {
   psubsets(List("a", "b", "c"))
 
   private def psubsets[T](xs: List[T]) {
-    println(s"subsets(${xs}) == "
+    println(s"subsets($xs) == "
       + subsets(xs).mkString("List(\n  ", "\n  ", "\n)"))
   }
 }
