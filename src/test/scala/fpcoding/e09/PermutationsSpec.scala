@@ -22,3 +22,4 @@ object PermutationsSpec extends Properties("순열") {
   }
 
 }
+
