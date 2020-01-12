@@ -5,13 +5,13 @@ import org.scalacheck.Prop.forAll
 import org.scalacheck.Properties
 
 import scala.util.Random
+import java.lang.Math.max
 
 object PermutationsSpec extends Properties("순열") {
   import Permutations._
 
   private def factorial(n: Int) =
-    if (n == 0) 1
-    else (1 to n).product
+    (1 to max(1, n)).product
 
   property("[순열의 수 == n!개]") = forAll(smallList(7)) { xs =>
     permutations(xs).size == factorial(xs.size)
