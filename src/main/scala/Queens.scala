@@ -5,7 +5,7 @@ object Queens extends App {
     case h :: t =>
       t.zipWithIndex.exists {
         case (q, i) => List(q, q - (i + 1), q + i + 1) contains h
-      } || (attacked(qs.tail))
+      } || attacked(qs.tail)
   }
 
   def queens(n: Int): List[List[Int]] = {
