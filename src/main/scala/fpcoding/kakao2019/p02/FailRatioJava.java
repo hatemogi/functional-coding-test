@@ -1,11 +1,10 @@
 package fpcoding.kakao2019.p02;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static java.util.Arrays.stream;
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 
 // https://www.welcomekakao.com/learn/courses/30/lessons/42889
@@ -18,14 +17,15 @@ public class FailRatioJava {
     }
 
     public List<Integer> solve(int n, List<Integer> stages) {
-        return IntStream.range(1, n + 1).boxed().sorted(
-            Comparator.comparingDouble((Integer i) -> failRatio(i, stages)).reversed()
+        return IntStream.rangeClosed(1, n).boxed().sorted(
+            comparing((Integer i) -> failRatio(i, stages))
+                    .reversed()
                     .thenComparing(i -> i)
         ).collect(toList());
     }
 
     public int[] solution(int n, int[] stages) {
-        List<Integer> players = Arrays.stream(stages).boxed().collect(toList());
+        List<Integer> players = stream(stages).boxed().collect(toList());
         List<Integer> ordered = solve(n, players);
         return ordered.stream().mapToInt(i -> i).toArray();
     }
