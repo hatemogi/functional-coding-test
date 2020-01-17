@@ -5,22 +5,18 @@ package fpcoding.kakao2019.p01
  https://tech.kakao.com/2018/09/21/kakao-blind-recruitment-for2019-round-1/
  */
 object OpenChat extends App {
-  def nicknames(events: List[String]): Map[String, String] =
-    events.foldLeft(Map.empty[String, String]) { (map, event) =>
-      event.split(' ') match {
-        case Array("Leave", _) => map
-        case Array(_, userId, nickname) =>
-          map.updated(userId, nickname)
-      }
+  def nicknames(records: List[List[String]]) =
+    records.foldLeft(Map.empty[String, String]) {
+      case (map, "Leave" :: _) => map
+      case (map, _ :: userId :: nickname :: _) => map.updated(userId, nickname)
     }
 
-  def solve(events: List[String]): List[String] = {
-    val nicks = nicknames(events)
-    events.filterNot(_.startsWith("Change")).map { event =>
-      event.split(' ') match {
-        case Array("Enter", userId, _) => nicks(userId) + "님이 들어왔습니다."
-        case Array("Leave", userId) => nicks(userId) + "님이 나갔습니다."
-      }
+  def solve(records: List[String]): List[String] = {
+    val tokenized = records.map { _.split(' ').toList }
+    val nicks = nicknames(tokenized)
+    tokenized.filterNot(_.head == "Change").map {
+      case "Enter" :: userId :: _ => nicks(userId) + "님이 들어왔습니다."
+      case "Leave" :: userId :: _ => nicks(userId) + "님이 나갔습니다."
     }
   }
 }
