@@ -12,7 +12,7 @@ object Repetitions extends App {
   }
 
   def compress(s: String): String =
-    (1 to s.length / 2)
+    (1 to s.length / 2 + 1)
       .map { n => compress(s.grouped(n).toList) }
       .minBy(_.length)
 
