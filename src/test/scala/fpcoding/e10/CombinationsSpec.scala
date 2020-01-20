@@ -23,3 +23,4 @@ object CombinationsSpec extends Properties("조합") {
     }
   }
 }
+
