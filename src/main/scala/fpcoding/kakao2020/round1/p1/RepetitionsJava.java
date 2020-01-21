@@ -32,7 +32,7 @@ public class RepetitionsJava {
     }
 
     public String solve(String s) {
-        return IntStream.rangeClosed(1, s.length() / 2 + 1).boxed()
+        return IntStream.rangeClosed(1, Math.max(1, s.length() / 2)).boxed()
                 .map(n -> compress(grouped(s, n)))
                 .min(comparing(String::length))
                 .orElse("");
