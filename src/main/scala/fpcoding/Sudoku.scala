@@ -26,7 +26,7 @@ object Sudoku extends App {
   // no duplicates && (1 .. 9) ?
 
   def validNumbers(ns: List[Int]): Boolean = {
-    val numbers = ns.filter(n => n > 0 && n < 10)
+    val numbers = ns.filter((1 to 9).contains)
     ns.size == 9 &&
       numbers.toSet.size == (if (ns contains 0) numbers.size else 9)
   }
