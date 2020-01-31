@@ -11,4 +11,10 @@ class ParenSpec extends AnyFlatSpec {
     assert(correct("()))((()") == "()(())()")
   }
 
+  "자바 예제도" should "주어진 답변과 같아야" in {
+    assert(ParensJava.correct("(()())()") == "(()())()")
+    assert(ParensJava.correct(")(") == "()")
+    assert(ParensJava.correct("()))((()") == "()(())()")
+  }
+
 }
