@@ -1,10 +1,10 @@
 package fpcoding.kakao2020.round1.p2
 
 object Parens extends App {
-  def balanced(s: List[Char]): Boolean =
+  def balanced(s: String): Boolean =
     s.count(_ == '(') == s.count(_ == ')')
 
-  def right(s: List[Char]): Boolean = {
+  def right(s: String): Boolean = {
     @scala.annotation.tailrec
     def r(open: Int, cs: List[Char]): Boolean =
       if (open < 0) false
@@ -15,7 +15,7 @@ object Parens extends App {
           case ')' => -1
           case _ => 0
         }), cs.tail)
-    r(0, s)
+    r(0, s.toList)
   }
 
   /*
@@ -32,36 +32,31 @@ object Parens extends App {
       4-5. 생성된 문자열을 반환합니다.
    */
 
-  def split(s: List[Char]): (List[Char], List[Char]) = {
+  def split(s: String): (String, String) = {
     @scala.annotation.tailrec
-    def sp(u: List[Char], v: List[Char]): (List[Char], List[Char]) =
+    def sp(u: String, v: String): (String, String) =
       if (balanced(u)) (u, v)
       else sp(u.appended(v.head), v.tail)
-    if (s.isEmpty) (Nil, Nil)
-    else sp(s.head :: Nil, s.tail)
+    if (s.isEmpty) ("", "")
+    else sp(s.substring(0, 1), s.drop(1))
   }
 
-  def correct(s: String): String = {
-    def trimReverse(cs: List[Char]): List[Char] =
-      cs.tail.reverse.tail.foldLeft(List[Char]()) {
-        case (cs, '(') => ')' :: cs
-        case (cs, ')') => '(' :: cs
-      }
-
-    def c(cs: List[Char]): List[Char] = {
-      if (cs.isEmpty) Nil
-      else if (right(cs)) cs
-      else {
-        val (u, v) = split(cs)
-        if (right(u)) u ++ c(v)
-        else ('(' :: c(v)).appended(')') ++ trimReverse(u)
-      }
+  def trimReverse(s: String): String =
+    s.substring(1, s.length - 1).foldLeft("") {
+      case (s, '(') => s + ')'
+      case (s, ')') => s + '('
+      case (s, c) => s + c
     }
-    c(s.toList).mkString
-  }
 
+  def correct(s: String): String =
+    if (right(s)) s
+    else {
+      val (u, v) = split(s)
+      if (right(u)) u + correct(v)
+      else "(" + correct(v) + ")" + trimReverse(u)
+    }
 
-  println(balanced("(()())()".toList), balanced(")(".toList), balanced("()))((()".toList))
-  println(right("(()())()".toList), right(")(".toList), right("()))((()".toList))
+  println(balanced("(()())()"), balanced(")("), balanced("()))((()"))
+  println(right("(()())()"), right(")("), right("()))((()"))
   println(correct(")("))
 }
