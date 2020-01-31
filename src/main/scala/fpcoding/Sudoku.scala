@@ -19,7 +19,7 @@ object Sudoku extends App {
   def parseGame(s: String): List[List[Int]] =
     s.split("\n").filterNot(_.isEmpty)
       .map(_.replace(" ", ""))
-      .map(_.toCharArray.map(_.toInt - '0'.toInt).toList)
+      .map(_.toList.map(_.toInt - '0'.toInt))
       .toList
 
   // 1..9 0 => empty
