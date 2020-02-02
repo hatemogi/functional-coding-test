@@ -1,55 +1,24 @@
 package fpcoding.kakao2020.round1.p2;
 
-import java.util.Iterator;
-
 import static java.util.Arrays.asList;
 
+/*
+    https://tech.kakao.com/2019/10/02/kakao-blind-recruitment-2020-round1/
+    https://programmers.co.kr/learn/courses/30/lessons/60058
+ */
 public class ParensJava {
     static boolean balanced(String s) {
         return s.chars().filter(c -> c == '(').count()
                 == s.chars().filter(c -> c == ')').count();
     }
 
-    private static boolean r(int open, Iterator<Integer> cs) {
-        if (open < 0) return false;
-        else if (!cs.hasNext()) return open == 0;
-        else {
-            int next = open;
-            char c = (char)cs.next().intValue();
-            switch (c) {
-                case '(':
-                    next++;
-                    break;
-                case ')':
-                    next--;
-                    break;
-            }
-            return r(next, cs);
-        }
-    }
-
     static boolean right(String s) {
-        return r(0, s.chars().boxed().iterator());
-    }
-
-    static String[] split(String s) {
-        if (s.isEmpty()) return new String[]{"", ""};
-        for (int i = 1; i <= s.length(); i++) {
-            if (balanced(s.substring(0, i)))
-                return new String[]{s.substring(0, i), s.substring(i)};
-        }
-        throw new IllegalArgumentException();
-    }
-
-    static String trimReverse(String s) {
-        StringBuilder out = new StringBuilder();
-        for (char c: s.substring(1, s.length() - 1).toCharArray()) {
-            if (c == '(')
-                out.append(")");
-            else if (c == ')')
-                out.append("(");
-        }
-        return out.toString();
+        return s.chars().reduce(0, (open, c) -> {
+            if (c == '(' && open >= 0)
+                return open + 1;
+            else
+                return open - 1;
+        }) == 0;
     }
 
     static String correct(String s) {
@@ -62,6 +31,21 @@ public class ParensJava {
             else
                 return "(" + correct(v) + ")" + trimReverse(u);
         }
+    }
+
+    static String[] split(String s) {
+        for (int i = 1; i <= s.length(); i++) {
+            if (balanced(s.substring(0, i)))
+                return new String[]{s.substring(0, i), s.substring(i)};
+        }
+        return new String[]{"", ""};
+    }
+
+    static String trimReverse(String s) {
+        return s.substring(1, s.length() - 1)
+                .replace('(', 'T')
+                .replace(')', '(')
+                .replace('T', ')');
     }
 
     public static void main(String[] args) {

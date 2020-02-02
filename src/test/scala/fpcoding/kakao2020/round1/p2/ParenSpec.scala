@@ -16,5 +16,4 @@ class ParenSpec extends AnyFlatSpec {
     assert(ParensJava.correct(")(") == "()")
     assert(ParensJava.correct("()))((()") == "()(())()")
   }
-
 }
