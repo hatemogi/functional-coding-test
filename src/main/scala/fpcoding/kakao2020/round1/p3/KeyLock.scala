@@ -8,6 +8,7 @@ object KeyLock extends App {
   def unlocked(lock: Grid): Boolean =
     lock.flatten.forall { _ > 0 }
 
+  /*
   def place(lock: Grid, key: Grid, x: Int, y: Int): Grid = {
     lock.zipWithIndex.map { case (row, rowIdx) =>
       row.zipWithIndex.map { case (col, colIdx) =>
@@ -15,7 +16,7 @@ object KeyLock extends App {
 
       }
     }
-  }
+  }*/
 
   def expand(g: Grid, n: Int): Grid = {
     val emptyRows = Vector.fill(n)(Vector.fill(n + g.size + n)(0))
@@ -30,5 +31,5 @@ object KeyLock extends App {
     g.map { r => r.mkString }.mkString("\n")
 
   val sample: Grid = Vector(Vector(1, 0), Vector(0, 1))
-  println(gridToString(place(expand(sample, 2), sample, 0, 0)))
+  // println(gridToString(place(expand(sample, 2), sample, 0, 0)))
 }
