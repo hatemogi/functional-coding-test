@@ -1,4 +1,4 @@
-package fpcoding
+package fpcoding.graph
 
 /**
  * 벨만-포드 알고리즘은 노드 x에서 다른 모든 노드로 가는 최단 경로를 찾는다.
