@@ -37,13 +37,12 @@ object BellmanFord extends App {
       }
     }
   }
-
   // 최단 경로 자체를 계산
   def shortestPaths(starting: Node, g: Graph): Map[Node, List[Node]] = {
     val initial = Map[Node, (Int, List[Node])](starting -> (0, List(starting)))
     nodes(g).foldLeft(initial) { case (paths, _) =>
       g.foldLeft(paths) { case (paths, (from, to, weight)) =>
-        val newLen: Option[Int] = paths.get(from).map { case (len, path) => len + weight }
+        val newLen: Option[Int] = paths.get(from).map { case (len, _) => len + weight }
         if (newLen.exists(l => l <= paths.getOrElse(to, (l, Nil))._1))
           paths.updated(to, (newLen.get, to :: paths(from)._2))
         else
