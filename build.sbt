@@ -8,6 +8,7 @@ ThisBuild / organizationName := "example"
 lazy val root = (project in file("."))
   .settings(
     name := "CodePractice",
+    //libraryDependencies += "org.clojure" % "clojure" % "1.10.1",
     libraryDependencies += scalaTest % Test,
     libraryDependencies += scalaCheck % Test
   )

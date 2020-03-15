@@ -1,3 +1,5 @@
+(ns fpcoding.kakao2020.round1.p2)
+
 (defn balanced? [s]
   (letfn [(cnt [c] (count (filter #(= c %) s)))]
     (= (cnt \() (cnt \)))))

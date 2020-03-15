@@ -31,7 +31,7 @@ object Parens extends App {
   }
 
   def trimReverse(s: String): String =
-    s.tail.dropRight(1).map {
+    s.substring(1, s.length - 1).map {
       case '(' => ')'
       case ')' => '('
     }
